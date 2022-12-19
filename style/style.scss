@@ -1,0 +1,716 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "./color.scss";
+@import "./mixins.scss";
+
+html {
+  font-size: 62.5%;
+
+  @media (max-width: 1000px) {
+    font-size: 1vw;
+  }
+}
+
+input {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+a {
+  text-decoration-line: none;
+  color: currentColor;
+}
+
+.body {
+  min-height: 100vh;
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: max(1.8rem, 14px);
+  background-color: $body-color;
+
+  @media (max-width: 1000px) {
+    padding: 0;
+  }
+}
+
+.main {
+  max-width: 100rem;
+  min-height: 100rem;
+  background-color: $primary-color;
+  box-shadow: 0 0 5rem #0000004d;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.profile {
+  position: absolute;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-bottom: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  &__image {
+    width: 25rem;
+    height: 25rem;
+    margin-bottom: 2rem;
+    transform: translateX(-5rem);
+    z-index: 1;
+
+    @media (max-width: 500px) {
+      width: 35rem;
+      height: 35rem;
+    }
+  }
+
+  &__container {
+    height: 0;
+    width: 76rem;
+    border-top: 25rem solid $secondary-dark;
+    border-left: 0 solid transparent;
+    border-right: 5rem solid transparent;
+    z-index: 2;
+
+    @media (max-width: 1000px) {
+      width: calc(100vw - 24rem);
+    }
+
+    @media (max-width: 500px) {
+      border-top: 35rem solid $secondary-dark;
+      width: calc(100vw - 34rem);
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-20rem);
+    color: $primary-color;
+
+    @media (max-width: 500px) {
+      transform: translateY(-28rem);
+    }
+  }
+
+  &__title {
+    font-size: max(4rem, 25px);
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 500px) {
+      margin-bottom: 1rem;
+      font-size: max(5rem, 18px);
+    }
+  }
+
+  &__subtitle {
+    font-size: max(2.5rem, 14px);
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 500px) {
+      margin-bottom: 2.5rem;
+      font-size: max(3rem, 12px);
+    }
+  }
+
+  &__contacts {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 500px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__icon {
+    height: max(3rem, 20px);
+    width: max(3rem, 20px);
+
+    @media (max-width: 500px) {
+      height: max(4.5rem, 16px);
+      width: max(4.5rem, 16px);
+    }
+
+    &_phone {
+      @include contact-icon("phone.svg");
+    }
+
+    &_mail {
+      @include contact-icon("mail.svg");
+    }
+
+    &_telegram {
+      @include contact-icon("telegram.svg");
+    }
+
+    &_skype {
+      @include contact-icon("skype.svg");
+    }
+
+    &_github {
+      @include contact-icon("github.svg");
+    }
+  }
+
+  &__info {
+    padding-right: 4rem;
+    text-transform: none;
+    align-self: end;
+    font-size: max(1.8rem, 12px);
+
+    @media (max-width: 500px) {
+      font-size: max(2.8rem, 12px);
+    }
+  }
+}
+
+.left-side {
+  @include side;
+  color: $primary-color;
+  background-color: $secondary-color;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding-top: 0;
+  }
+}
+
+.section {
+  padding-bottom: 3rem;
+
+  &__title {
+    margin-bottom: 3rem;
+    position: relative;
+    padding: 0.6rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: max(2.2rem, 18px);
+    text-transform: uppercase;
+
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: transparent;
+      width: 99.5%;
+      left: 2px;
+      height: 50%;
+      z-index: -1;
+      box-shadow: 0 2rem 0.7rem $secondary-dark;
+      @media (max-width: 500px) {
+        transform: rotate(1.5deg);
+        width: 99%;
+        left: 2px;
+      }
+    }
+
+    &_light {
+      background-color: $primary-color;
+      color: $secondary-color;
+
+      @media (max-width: 768px) {
+        background-color: $secondary-color;
+        color: $primary-color;
+      }
+
+      &::before {
+        transform: rotate(3deg);
+
+        @media (max-width: 768px) {
+          transform: rotate(1deg);
+        }
+      }
+    }
+
+    &_dark {
+      background-color: $secondary-color;
+      color: $primary-color;
+
+      &::before {
+        transform: rotate(1deg);
+      }
+    }
+  }
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__title {
+    text-transform: capitalize;
+    padding-left: max(3rem, 25px);
+    font-size: max(1.8rem, 16px);
+  }
+}
+
+.skills__icon {
+  &_react {
+    @include skills-icon("react.svg");
+
+    @media (max-width: 768px) {
+      @include skills-icon("react-resp.svg");
+    }
+  }
+
+  &_redux {
+    @include skills-icon("redux.svg");
+
+    @media (max-width: 768px) {
+      @include skills-icon("redux-resp.svg");
+    }
+  }
+
+  &_js {
+    @include skills-icon("js.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("js-resp.svg");
+    }
+  }
+
+  &_ts {
+    @include skills-icon("ts.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("ts-resp.svg");
+    }
+  }
+
+  &_html {
+    @include skills-icon("html.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("html-resp.svg");
+    }
+  }
+
+  &_css {
+    @include skills-icon("css.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("css-resp.svg");
+    }
+  }
+
+  &_sass {
+    @include skills-icon("sass.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("sass-resp.svg");
+    }
+  }
+
+  &_bem {
+    @include skills-icon("bem.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("bem-resp.svg");
+    }
+  }
+
+  &_git {
+    @include skills-icon("git.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("git-resp.svg");
+    }
+  }
+
+  &_npm {
+    @include skills-icon("npm.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("npm-resp.svg");
+    }
+  }
+
+  &_figma {
+    @include skills-icon("figma.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("figma-resp.svg");
+    }
+  }
+
+  &_photoshop {
+    @include skills-icon("photoshop.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("photoshop-resp.svg");
+    }
+  }
+
+  &_vscode {
+    @include skills-icon("vscode.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("vscode-resp.svg");
+    }
+  }
+
+  &_webstorm {
+    @include skills-icon("webstorm.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("webstorm-resp.svg");
+    }
+  }
+
+  &_postman {
+    @include skills-icon("postman.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("postman-resp.svg");
+    }
+  }
+
+  &_swagger {
+    @include skills-icon("swagger.svg");
+    @media (max-width: 768px) {
+      @include skills-icon("swagger-resp.svg");
+    }
+  }
+
+  &_node {
+    @include skills-icon("node.svg");
+    grid-column: 1 / 3;
+    @media (max-width: 768px) {
+      @include skills-icon("node-resp.svg");
+    }
+  }
+
+  &_rtl {
+    @include skills-icon("rtl.svg");
+    grid-column: 1 / 3;
+    @media (max-width: 768px) {
+      @include skills-icon("rtl-resp.svg");
+      grid-column: span 2;
+    }
+  }
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: max(1rem, 10px);
+
+  &__year {
+    font-size: max(1.8rem, 14px);
+    color: $secondary-dark;
+    font-weight: 700;
+  }
+
+  &__description {
+    font-size: max(1.6rem, 14px);
+  }
+}
+
+.lang__item {
+  text-transform: uppercase;
+  font-size: max(1.6rem, 14px);
+  line-height: max(2.4rem, 20px);
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: max(3rem, 25px);
+
+    &::after {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      content: "";
+      height: 0.2rem;
+      width: 0;
+      background-color: currentColor;
+      transition: width 1s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:nth-child(1) {
+      background: url("../assets/svg/location.svg") no-repeat 0 0 / contain;
+
+      @media (max-width: 768px) {
+        background: url("../assets/svg/location-resp.svg") no-repeat 0 0 /
+          contain;
+      }
+    }
+
+    &:nth-child(2) {
+      background: url("../assets/svg/phone.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/phone-resp.svg") no-repeat 0 0 / contain;
+      }
+    }
+
+    &:nth-child(3) {
+      background: url("../assets/svg/mail.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/mail-resp.svg") no-repeat 0 0 / contain;
+      }
+    }
+
+    &:nth-child(4) {
+      background: url("../assets/svg/github.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/github-resp.svg") no-repeat 0 0 / contain;
+      }
+    }
+
+    &:nth-child(5) {
+      background: url("../assets/svg/telegram-2.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/telegram-2-resp.svg") no-repeat 0 0 /
+          contain;
+      }
+    }
+
+    &:nth-child(6) {
+      background: url("../assets/svg/skype.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/skype-resp.svg") no-repeat 0 0 / contain;
+      }
+    }
+
+    &:nth-child(7) {
+      background: url("../assets/svg/discord.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/discord-resp.svg") no-repeat 0 0 /
+          contain;
+      }
+    }
+
+    &:nth-child(8) {
+      background: url("../assets/svg/codewars.svg") no-repeat 0 0 / contain;
+      @media (max-width: 768px) {
+        background: url("../assets/svg/codewars-resp.svg") no-repeat 0 0 /
+          contain;
+      }
+    }
+  }
+}
+
+.right-side {
+  @include side;
+  background-color: $primary-color;
+  z-index: 0;
+  color: $secondary-dark;
+  padding-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 500px) {
+    padding-top: 41rem;
+  }
+}
+
+.summary {
+  text-indent: 3rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768) {
+    font-size: 1rem;
+  }
+}
+
+.projects-container {
+  overflow: hidden;
+}
+
+.projects {
+  display: flex;
+  width: 700%;
+  transition: transform 1s ease;
+
+  &__item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 100%;
+
+    & > .project__item-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 0.5rem;
+      color: $secondary-dark;
+      background-color: $primary-color;
+      opacity: 0.9;
+      transform: translateY(90%);
+      transition: transform 1s;
+
+      @media (max-width: 768px) {
+        font-size: max(2.2rem, 14px);
+        transform: translateY(min(92%, calc(100% - 20px)));
+      }
+    }
+
+    &:hover {
+      & > .project__item-text {
+        transform: translateY(60%);
+
+        @media (max-width: 500px) {
+          transform: translateY(40%);
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    padding-top: max(1rem, 10px);
+
+    &-item {
+      width: max(1.3rem, 13px);
+      height: max(1.3rem, 13px);
+      background-color: $secondary-color;
+      border-radius: 50%;
+      border: 0.2rem solid $secondary-color;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: $secondary-dark;
+        border: 0.2rem solid currentColor;
+      }
+    }
+  }
+}
+
+.project__item-description {
+  padding: 2rem;
+  font-size: max(1.6rem, 14px);
+  text-align: center;
+}
+
+#portfolio:checked ~ .projects {
+  @include slider-navigation(0, ".portfolio");
+}
+
+#rs-lang:checked ~ .projects {
+  @include slider-navigation(1, ".rs-lang");
+}
+
+#kanban:checked ~ .projects {
+  @include slider-navigation(2, ".kanban");
+}
+
+#react-app:checked ~ .projects {
+  @include slider-navigation(3, ".react-app");
+}
+
+#online-store:checked ~ .projects {
+  @include slider-navigation(4, ".online-store");
+}
+
+#virtual-keyboard:checked ~ .projects {
+  @include slider-navigation(5, ".virtual-keyboard");
+}
+
+#mem-slider:checked ~ .projects {
+  @include slider-navigation(6, ".mem-slider");
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: max(1rem, 10px);
+
+  &__year {
+    font-size: max(1.8rem, 14px);
+    color: $secondary-dark;
+    font-weight: 700;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__description {
+    font-size: max(1.6rem, 14px);
+  }
+}
+
+.certificates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  &__item:nth-child(1) {
+    @include certificate(1, calc(100% + 2rem), 12.9rem, 3.5);
+
+    @media (max-width: 768px) {
+      @include certificate(1, calc(100% + 2rem), 20.7rem, 3);
+    }
+  }
+
+  &__item:nth-child(2) {
+    @include certificate(2, 0, 12.9rem, 3.5);
+
+    @media (max-width: 768px) {
+      @include certificate(1, 0, 20.7rem, 3);
+    }
+  }
+
+  &__item:nth-child(3) {
+    @include certificate(3, calc(-100% - 2rem), 12.9rem, 3.5);
+
+    @media (max-width: 768px) {
+      @include certificate(1, calc(-100% - 2rem), 20.7rem, 3);
+    }
+  }
+}

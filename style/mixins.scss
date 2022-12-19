@@ -1,0 +1,38 @@
+@mixin side {
+  position: relative;
+  padding: 33rem 4rem 4rem;
+}
+
+@mixin contact-icon($svg) {
+  background: url("../assets/svg/" + $svg) no-repeat 0 0 / contain;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+@mixin skills-icon($title) {
+  background: url("../assets/svg/" + $title) no-repeat 0 0 / contain;
+}
+
+@mixin slider-navigation($number, $selector) {
+  transform: translateX(calc(-100% / 7) * $number);
+
+  &__navigation #{$selector} {
+    background-color: $primary-color;
+  }
+}
+
+@mixin certificate($number, $translate, $height, $scale) {
+  width: 100%;
+  height: $height;
+  background: url("../assets/image/certificate-" + $number + ".jpg") no-repeat 0
+    0 / cover;
+  transition: transform 0.7s, box-shadow 0.7s;
+
+  &:hover {
+    box-shadow: 0 0 0.5rem 0.1rem $secondary-color;
+    transform: translateX($translate) translateY(-100%) scale($scale);
+  }
+}

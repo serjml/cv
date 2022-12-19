@@ -632,6 +632,10 @@ a {
   }
 }
 
+.project__item-title {
+  font-size: max(1.8rem, 14px);
+}
+
 .project__item-description {
   padding: 2rem;
   font-size: max(1.6rem, 14px);
